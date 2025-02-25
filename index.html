@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng sinh nhật!</title>
+    <style>
+        body {
+            background-image: url('anh-nen-cute-40.jpg'); /* Hình nền tải sẵn */
+            background-size: cover;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+        .container {
+            margin-top: 20%;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #video-container {
+            display: none;
+            margin-top: 20px;
+        }
+        video {
+            width: 90%;
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="Obito - -tell the kids i love them- ft. Shiki (Official MV).mp3" type="audio/mpeg"> <!-- Nhạc nền tải sẵn -->
+    </audio>
+    
+    <div class="container" id="password-container">
+        <h1>Hãy nhập password để tiếp tục!</h1>
+        <input type="password" id="password" placeholder="Nhập ngày sinh (dd/mm/yyyy)">
+        <button onclick="checkPassword()">Xác nhận</button>
+        <p id="error" style="color: red;"></p>
+    </div>
+    
+    <div id="video-container">
+        <h1>Chúc mừng sinh nhật! 🎉🎂</h1>
+        <video id="birthday-video" controls>
+            <source src="Sn Moi beo 2025.mp4" type="video/mp4"> <!-- Video chúc mừng sinh nhật -->
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+    </div>
+    
+    <script>
+        document.addEventListener("click", function() {
+            var audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+
+        function checkPassword() {
+            var pass = document.getElementById("password").value;
+            if (pass === "26/03/2006") {
+                document.getElementById("password-container").style.display = "none";
+                document.getElementById("video-container").style.display = "block";
+                document.getElementById("birthday-video").play();
+            } else {
+                document.getElementById("error").innerText = "Sai mật khẩu! Hãy thử lại.";
+            }
+        }
+    </script>
+</body>
+</html>
